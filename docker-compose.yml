@@ -1,0 +1,10 @@
+version: "3.9"
+services:
+  bootloader-dev:
+    image: bootloader-dev
+    container_name: bootloader-dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/bootloader
