@@ -1,4 +1,3 @@
-version: "3.9"
 services:
   bootloader-dev:
     image: bootloader-dev
@@ -6,5 +5,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+      - DISPLAY=${DISPLAY}
     volumes:
       - .:/bootloader
+      - /dev:/dev # This is needed to access virtualization devices for QEMU (e.g. /dev/kvm on Linux).
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    privileged: true # This is needed to access all devices in /dev.
+    network_mode: "host"
