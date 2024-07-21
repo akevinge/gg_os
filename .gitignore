@@ -4,3 +4,5 @@ uefi
 *.o
 # Ignore efi binaries.
 *.efi
+# Ignore ISO files
+*.iso

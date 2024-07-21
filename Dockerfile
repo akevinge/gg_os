@@ -23,12 +23,12 @@ RUN apt-get update -y && apt-get install -y \
     mtools \
     dosfstools
 
-# Copy the entrypoint script.
-COPY /entrypoint.sh /opt/entrypoint.sh
-
 # Install QEMU and UEFI firmware.
 RUN apt-get update -y && apt-get install -y \
     qemu-system-x86 \
     ovmf
+
+# Copy the entrypoint script.
+COPY /entrypoint.sh /opt/entrypoint.sh
 
 ENTRYPOINT [ "/opt/entrypoint.sh" ]

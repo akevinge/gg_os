@@ -6,6 +6,6 @@
 echo "🧭 Symlinking /posix-uefi/uefi to /bootloader/uefi..."
 
 mkdir -p /bootloader
-cd /bootloader && ln -s /posix-uefi/uefi
+cd /bootloader && ln -s -f /posix-uefi/uefi
 
 exec bash
