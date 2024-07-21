@@ -8,4 +8,6 @@ echo "🧭 Symlinking /posix-uefi/uefi to /bootloader/uefi..."
 mkdir -p /bootloader
 cd /bootloader && ln -s -f /posix-uefi/uefi
 
-exec bash
+git config --global --add safe.directory /bootloader
+
+sleep infinity
