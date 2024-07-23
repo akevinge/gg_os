@@ -12,3 +12,9 @@ code gg_os
 
 Hit `Ctrl+P`, search for `Dev Containers: Reopen in Container`, and hit enter.
 Now your dev environment is set up.
+
+3. In a new terminal run:
+```bash
+make run
+```
+This should give you the QEMU boot window.

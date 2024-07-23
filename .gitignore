@@ -1,8 +1,4 @@
 # Ignore the posix-uefi/uefi symlink.
 uefi
-# Ignore object files.
-*.o
-# Ignore efi binaries.
-*.efi
-# Ignore ISO files
-*.iso
+# Ignore build artifacts.
+out/

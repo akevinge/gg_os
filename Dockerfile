@@ -23,6 +23,11 @@ RUN apt-get update -y && apt-get install -y \
     mtools \
     dosfstools
 
+# Install disk format tools.
+RUN apt-get update -y && apt-get install -y \
+    parted \
+    udev
+
 # Install QEMU and UEFI firmware.
 RUN apt-get update -y && apt-get install -y \
     qemu-system-x86 \
