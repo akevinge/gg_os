@@ -34,6 +34,6 @@ RUN apt-get update -y && apt-get install -y \
     ovmf
 
 # Copy the entrypoint script.
-COPY /entrypoint.sh /opt/entrypoint.sh
+COPY /scripts/docker_entrypoint.sh /opt/docker_entrypoint.sh
 
-ENTRYPOINT [ "/opt/entrypoint.sh" ]
+ENTRYPOINT [ "/opt/docker_entrypoint.sh" ]
