@@ -1,16 +1,17 @@
 #!/bin/sh
 
 usage() {
-    echo "Usage: $0 <EFI application> <efi_path> <disk image>"
+    echo "Usage: $0 <EFI application> <efi_path> <disk_structure_to_mount> <out_disk_image>"
 }
 
 EFI_PATH=$1
-IMAGE_OUT=$2
+DISK_STRUCTURE=$2
+IMAGE_OUT=$3
 
 # Temporary mount directory to build EFI partition.
 TEMP_MNT_DIR=/tmp/mnt
 
-if [ "$#" -ne 2 ]; then
+if [ "$#" -ne 3 ]; then
     usage
     exit 1
 fi
@@ -43,6 +44,17 @@ mkdir -p $TEMP_MNT_DIR/EFI/BOOT
 
 # Copy the EFI application.
 cp $EFI_PATH $TEMP_MNT_DIR/EFI/BOOT/BOOTX64.EFI
+
+# Copy all files and directories to the disk image.
+# Ensure we're inside the directory to copy over.
+# Otherwise we'll end up with the full path in the disk image.
+# For example, if our disk structure is mountable_disk/test.txt,
+# we want to copy over test.txt to the disk image, not mountable_disk/test.txt.
+cd $DISK_STRUCTURE
+for f in $(find . -type f -print); do
+    cp --parents $f $TEMP_MNT_DIR/
+done
+cd ..
 
 # Ensure that the EFI application is fully written to the disk.
 sync

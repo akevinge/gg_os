@@ -3,10 +3,11 @@ TARGET = boot.efi
 
 include uefi/Makefile
 
+DISK_STRUCTURE=disk_structure/
 DISK_IMG = out/disk.img
 
 create_disk:
-	./scripts/create_disk.sh $(OUTDIR)/$(TARGET) $(DISK_IMG)
+	./scripts/create_disk.sh $(OUTDIR)/$(TARGET) $(DISK_STRUCTURE) $(DISK_IMG)
 
 run_qemu:
 	qemu-system-x86_64 \
