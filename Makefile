@@ -12,7 +12,8 @@ create_disk:
 run_qemu:
 	qemu-system-x86_64 \
 		-drive file=$(DISK_IMG),format=raw,if=virtio \
-		-bios /usr/share/ovmf/OVMF.fd
+		-bios /usr/share/ovmf/OVMF.fd \
+		-serial stdio
 
 run: 
 	# Clean build artifacts.
